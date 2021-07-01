@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+.gridContainer{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.gridItem{
+  border: 1px solid black;
+  height: 200px;
+  color:blue;
+  font-size:xx-large;
+}
