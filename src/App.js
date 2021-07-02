@@ -4,7 +4,7 @@ import {useState, useEffect, useReducer } from 'react';
 
 const Card = (props) =>{
   const [num, setNum] = useState ("..."); // avoid changing pros.value or props.faceup
-  const [disable, setDisable] = useState(props.faceup):
+  const [disable, setDisable] = useState(props.faceup);
   
   const parentCallback = () =>{
      setDisable(true);
