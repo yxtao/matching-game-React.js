@@ -50,7 +50,7 @@ const Board = (props) =>{
     }
 
   return(
-    <div>
+    <div>{JSON.stringify(pairs)} and {JSON.stringify(checkedCards)}
       <div className= "gridContainer">
         {cards.map((card, index)=> (<Card id={index} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
         {cards.map((card, index)=> (<Card id={index*10} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
