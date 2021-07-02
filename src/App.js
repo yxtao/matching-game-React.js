@@ -82,10 +82,10 @@ const Game = () =>{
          current cards:  {state.nums} 
       </div>
       <div style={mystyle}>      
-        <button style={mystyle} disabled={start&&state.nums.length>=1} onClick={()=> dispatch({type: 'add'})}>Add cards</button> 
+        <button style={mystyle} disabled={start || state.nums.length>=9} onClick={()=> dispatch({type: 'add'})}>Add cards</button> 
       </div>
       <div style={mystyle}> 
-        <button style={mystyle} disabled={start&&state.nums.length<=9} onClick={()=> dispatch({type: 'reduce'})}>Reduce cards</button> 
+        <button style={mystyle} disabled={start || state.nums.length<=1} onClick={()=> dispatch({type: 'reduce'})}>Reduce cards</button> 
       </div>
        {start? <div style={mystyle}> <Board cardnums = {state.nums} /> <button style={mystyle} onClick = {()=> setStart(false)}> restart</button> </div>
               : <button style={mystyle} onClick={()=> setStart(true)}> start </button> } 
