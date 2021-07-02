@@ -37,7 +37,7 @@ const Board = (props) =>{
    // setCards((preCards)=>preCards.map((card)=> ({value:card.value, faceup: pairs.includes(card.value)? true : false} ) ))
     setCards((preCards)=>preCards.map((card)=> ({
                                                ...card,
-                                                faceup: pairs.includes(card.value) || clickedCards.includes(card.id) } ) ))
+                                                faceup: pairs.includes(card.value) || clickedCards.includes(card) } ) ))
   },[pairs, clickedCards])
 
  function createCards(nums){ 
