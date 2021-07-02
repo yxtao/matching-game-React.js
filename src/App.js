@@ -10,7 +10,7 @@ const Card = (props) =>{
      setNum(props.value);
      props.callback({value:props.value, id:props.id});
   
-     setTimeout(()=> {setNum("...")}, 1000); // first input must be a function 
+    setTimeout(()=> {setNum("...")}, 1000); // first input must be a function 
   }
   return (
     <button className="gridItem" onClick = {parentCallback} disabled = {props.faceup}>  {props.faceup? props.value: num} </button>
@@ -18,9 +18,12 @@ const Card = (props) =>{
 }
 
 const Board = (props) =>{
+  const [seconds, setSeconds] = useState (0);
   const [cards, setCards]= useState(createCards(props.cardnums));
   const [pairs, setPairs] = useState([]);
   const [clickedCards, setClickedCards] = useState([])
+  const  timer= setTimeout = (()=> {setSeconds((pre)=> pre+1}, 1000);
+  useEffect(timer,[])                   
   const handleCallback = (data)=> {
       if (clickedCards.length === 0) {
             setClickedCards((pre) => [...pre,data]);
@@ -56,7 +59,7 @@ const Board = (props) =>{
     }
 
   return(
-    <div>
+    <div> Timer : {seconds}s
       <div className= "gridContainer">
         {cards.map((card, index)=> (<Card id={index} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
         {cards.map((card, index)=> (<Card id={index+10} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
