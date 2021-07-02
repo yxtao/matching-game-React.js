@@ -33,7 +33,7 @@ const Board = (props) =>{
               setPairs((prePairs)=> [...prePairs, data.value]); 
           } 
          setClickedCards([]); 
-         setMoves((pre)=> pre+1));
+         setMoves((pre)=> pre+1);
        } 
     else{
         alert("error");
