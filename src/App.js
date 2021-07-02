@@ -23,7 +23,7 @@ const Board = (props) =>{
   const [clickedCards, setClickedCards] = useState([])
   const handleCallback = (data)=>{
     //setClickedCards((pre)=>  [...pre, data])
-    if(clickedCards.id !== card.id ) {
+    if(clickedCards.id !== data.id ) {
       setClickedCards((pre) => [...pre,data]);
         if(clickedCards.length === 1 ) {
             if(clickedCards[0].value === data.value) {
