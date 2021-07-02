@@ -4,13 +4,16 @@ import {useState, useEffect, useReducer } from 'react';
 
 const Card = (props) =>{
   const [num, setNum] = useState ("..."); // avoid changing pros.value or props.faceup
+  const [disable, setDisable] = useState(props.faceup):
+  
   const parentCallback = () =>{
+     setDisable(true);
      setNum(props.value);
      props.callback(props.value);
      setTimeout(()=> {setNum("...")}, 500); // first input must be a function 
   }
   return (
-    <button className="gridItem" onClick = {parentCallback} disabled = {props.faceup}>  {props.faceup? props.value: num}  </button>
+    <button className="gridItem" onClick = {parentCallback} disabled = {disable}>  {props.faceup? props.value: num}  </button>
   ) 
 }
 
