@@ -26,10 +26,10 @@ const Board = (props) =>{
         if(clickedCards.length === 1 ) {
             if(clickedCards[0].id === data.id) return 
             if(clickedCards[0].value === data.value) {
-            setPairs((prePairs)=> [...prePairs, data.value]); 
+               setPairs((prePairs)=> [...prePairs, data.value]); 
+               setClickedCards([]);
             }
-       setClickedCards([]);
-      
+       setClickedCards([]);    
     } 
     console.log(clickedCards);
     console.log(pairs)
@@ -52,7 +52,7 @@ const Board = (props) =>{
     }
 
   return(
-    <div>{JSON.stringify(pairs)} and {JSON.stringify(clickedCards)}
+    <div>pairs {JSON.stringify(pairs)} and clickedcards {JSON.stringify(clickedCards)}
       <div className= "gridContainer">
         {cards.map((card, index)=> (<Card id={index} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
         {cards.map((card, index)=> (<Card id={index*10} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
