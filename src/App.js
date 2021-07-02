@@ -13,7 +13,7 @@ const Card = (props) =>{
      setTimeout(()=> {setNum("...")}, 1000); // first input must be a function 
   }
   return (
-    <button className="gridItem" onClick = {parentCallback} disabled = {props.faceup}>  {props.faceup? props.value: num} id: {props.id}</button>
+    <button className="gridItem" onClick = {parentCallback} disabled = {props.faceup}>  {props.faceup? props.value: num} </button>
   ) 
 }
 
@@ -25,12 +25,12 @@ const Board = (props) =>{
       if (clickedCards.length === 0) {
             setClickedCards((pre) => [...pre,data]);
          }
-    else if(clickedCards.length === 1 ) {
+      else if(clickedCards.length === 1 ) {
         // alert("length==1 :: " +clickedCards[0].value +"::"+data.value);
-         if(clickedCards[0].id === data.id) {alert("you clicked this one already")}
-         else if(clickedCards[0].value === data.value) {
+         if(clickedCards[0].id === data.id) return
+         if(clickedCards[0].value === data.value) {
               setPairs((prePairs)=> [...prePairs, data.value]); 
-              alert("setPairs" + data.value);
+             // alert("setPairs" + data.value);
           } 
          setClickedCards([]);         
        } 
@@ -56,7 +56,7 @@ const Board = (props) =>{
     }
 
   return(
-    <div>pairs {JSON.stringify(pairs)} and clickedcards {JSON.stringify(clickedCards)}
+    <div>
       <div className= "gridContainer">
         {cards.map((card, index)=> (<Card id={index} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
         {cards.map((card, index)=> (<Card id={index+10} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
