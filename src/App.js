@@ -21,17 +21,17 @@ const Board = (props) =>{
   const [cards, setCards]= useState(createCards(props.cardnums));
   const [pairs, setPairs] = useState([]);
   const [clickedCards, setClickedCards] = useState([])
-  const handleCallback = (data)=>{
-      setClickedCards((pre) => [...pre,data]);
-        if(clickedCards.length >= 1 ) {
+  const handleCallback = (data)=> {
+      if (clickedCards.length === 0) {
+            setClickedCards((pre) => [...pre,data]);
+         }
+        if(clickedCards.length === 1 ) {
             if(clickedCards[0].id === data.id) return 
             if(clickedCards[0].value === data.value) {
                setPairs((prePairs)=> [...prePairs, data.value]); 
-               }
-          setClickedCards([]);    
+            } 
+            setClickedCards([]);         
     } 
-    console.log(clickedCards);
-    console.log(pairs)
   }
 
   useEffect(()=>{
