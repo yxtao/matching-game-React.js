@@ -26,9 +26,9 @@ const Board = (props) =>{
             setClickedCards((pre) => [...pre,data]);
          }
     else if(clickedCards.length === 1 ) {
-         alert("length==1 :: " +clickedCards[0].value +"::"+data.value);
-         if(clickedCards[0].id === data.id) return 
-         if(clickedCards[0].value === data.value) {
+        // alert("length==1 :: " +clickedCards[0].value +"::"+data.value);
+         if(clickedCards[0].id === data.id) {alert("you clicked this one already")}
+         else if(clickedCards[0].value === data.value) {
               setPairs((prePairs)=> [...prePairs, data.value]); 
               alert("setPairs" + data.value);
           } 
