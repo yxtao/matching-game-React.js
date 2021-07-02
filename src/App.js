@@ -4,16 +4,16 @@ import {useState, useEffect, useReducer } from 'react';
 
 const Card = (props) =>{
   const [num, setNum] = useState ("..."); // avoid changing pros.value or props.faceup
-  const [disable, setDisable] = useState(props.faceup);
+  //const [disable, setDisable] = useState(props.faceup);
   
    const parentCallback = () =>{
      setNum(props.value);
-     props.callback(props.value);
+     props.callback({value:props.value, id:props.id});
   
      setTimeout(()=> {setNum("...")}, 1000); // first input must be a function 
   }
   return (
-    <button className="gridItem" onClick = {parentCallback} disabled = {disable}>  {props.faceup? props.value: num}  </button>
+    <button className="gridItem" onClick = {parentCallback} disabled = {props.faceup}>  {props.faceup? props.value: num}  </button>
   ) 
 }
 
@@ -21,11 +21,11 @@ const Board = (props) =>{
   const [cards, setCards]= useState(createCards(props.cardnums));
   const [pairs, setPairs] = useState([]);
   const [clickedCards, setClickedCards] = useState([])
-  const handleCallback = (num)=>{
-    setClickedCards((pre)=>  [...pre, num])
+  const handleCallback = (data)=>{
+    setClickedCards((pre)=>  [...pre, data.id])
     if(clickedCards.length === 1 ) {
-      if(clickedCards[0]===num) {
-       setPairs((prePairs)=> [...prePairs, num]); 
+      if(clickedCards[0].value === data.value) {
+       setPairs((prePairs)=> [...prePairs, data.value]); 
       }
        setClickedCards([]);
     } 
@@ -37,7 +37,7 @@ const Board = (props) =>{
    // setCards((preCards)=>preCards.map((card)=> ({value:card.value, faceup: pairs.includes(card.value)? true : false} ) ))
     setCards((preCards)=>preCards.map((card)=> ({
                                                ...card,
-                                                faceup: pairs.includes(card.value) } ) ))
+                                                faceup: pairs.includes(card.value) || clickedCards.includes(card.id) } ) ))
   },[pairs, clickedCards])
 
  function createCards(nums){ 
@@ -52,8 +52,8 @@ const Board = (props) =>{
   return(
     <div>
       <div className= "gridContainer">
-        {cards.map((card)=> (<Card value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
-        {cards.map((card)=> (<Card value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
+        {cards.map((card, index)=> (<Card id={index} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
+        {cards.map((card, index)=> (<Card id={index*10} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
       </div>
     </div>
   )
