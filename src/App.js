@@ -13,7 +13,7 @@ const Card = (props) =>{
      setTimeout(()=> {setNum("...")}, 1000); // first input must be a function 
   }
   return (
-    <button className="gridItem" onClick = {parentCallback} disabled = {props.faceup}>  {props.faceup? props.value: num}  </button>
+    <button className="gridItem" onClick = {parentCallback} disabled = {props.faceup}>  {props.faceup? props.value: num} id: {props.id}</button>
   ) 
 }
 
@@ -59,7 +59,7 @@ const Board = (props) =>{
     <div>pairs {JSON.stringify(pairs)} and clickedcards {JSON.stringify(clickedCards)}
       <div className= "gridContainer">
         {cards.map((card, index)=> (<Card id={index} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
-        {cards.map((card, index)=> (<Card id={index*10} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
+        {cards.map((card, index)=> (<Card id={index+10} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
       </div>
     </div>
   )
