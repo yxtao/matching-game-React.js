@@ -19,13 +19,14 @@ const Card = (props) =>{
 
 const Board = (props) =>{
   const [counter, setCounter] = useState(0);
+  const [end, setEnd] = useState(false);
   const [moves, setMoves] = useState (0);
   const [cards, setCards]= useState(createCards(props.cardnums));
   const [pairs, setPairs] = useState([]);
   const [clickedCards, setClickedCards] = useState([])
   const timer = setInterval(setTimer, 1000);      
   
-  if(pairs.length === cards.length) clearInterval(timer,1000); 
+  if(end === true)clearInterval(timer,1000); 
   
   function setTimer() {
       setCounter(counter+1);
@@ -52,6 +53,9 @@ const Board = (props) =>{
     setCards((preCards)=>preCards.map((card)=> ({
                                                ...card,
                                                 faceup: pairs.includes(card.value) || clickedCards.includes(card) } ) ))
+    if(pairs.length === cards.length) {
+        setEnd(true);
+    }
   },[pairs, clickedCards])
 
  function createCards(nums){ 
