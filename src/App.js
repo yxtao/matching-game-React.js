@@ -71,7 +71,7 @@ const Board = (props) =>{
  }
   
  function createCards(numArray){ 
-      var nums = shuffleArray(numArray);
+      var nums= shuffleArray(numArray.concat(numArray));
       var cardlist=[];
       for (var i=0; i<nums.length; i++) {
            var card = {value:nums[i], faceup: false };
@@ -87,7 +87,6 @@ const Board = (props) =>{
       {pairs.length === cards.length ? <div> Congratulation! you win</div> : null}
       <div className= "gridContainer">
         {cards.map((card, index)=> (<Card id={index} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
-        {cards.map((card, index)=> (<Card id={index+10} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
       </div>
     </div>
   )
