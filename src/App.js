@@ -36,8 +36,9 @@ const Board = (props) =>{
     const timer = window.setInterval(() => {
         setCounter((pre)=> pre + 1);
     }, 1000);
+    if(end === true) window.clearInterval(timer);
     return () => window.clearInterval(timer);
-  }, []);
+  }, [end]);
   
   const handleCallback = (data)=> {
       if (clickedCards.length === 0) {
