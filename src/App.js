@@ -114,7 +114,7 @@ const Game = () =>{
   return (
     <div className="App">
       <div style={mystyle} >
-         current cards:  {state.nums} 
+         current cards:  {state.nums.map((num)=> num+ ' , ')} 
       </div>
       <div style={mystyle}>      
         <button style={mystyle} disabled={start || state.nums.length>=9} onClick={()=> dispatch({type: 'add'})}>Add cards</button> 
