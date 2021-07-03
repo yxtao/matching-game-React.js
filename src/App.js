@@ -33,7 +33,7 @@ const Board = (props) =>{
 //  }
   useEffect(() => {
     const timer = window.setInterval(() => {
-        setConter(counter + 1);
+        setCounter(counter + 1);
     }, 1000);
 
     return () => window.clearInterval(timer);
