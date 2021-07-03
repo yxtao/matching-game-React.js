@@ -24,13 +24,6 @@ const Board = (props) =>{
   const [cards, setCards]= useState(createCards(props.cardnums));
   const [pairs, setPairs] = useState([]);
   const [clickedCards, setClickedCards] = useState([])
- // const timer = setInterval(setTimer, 1000);      
-  
- // if(end === true)clearInterval(timer,1000); 
-  
-//  function setTimer() {
-//      setCounter(counter+1);
-//  }
   
   useEffect(() => {
     const timer = window.setInterval(() => {
