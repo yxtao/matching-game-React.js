@@ -59,12 +59,23 @@ const Board = (props) =>{
         setEnd(true);
     }
   },[pairs, clickedCards])
-
- function createCards(nums){ 
+  
+ function shuffleArray(array)  {
+     for(let i = array.length — 1; i > 0; i--){
+     const j = Math.floor(Math.random() * i);
+     const temp = array[i];
+     array[i] = array[j];
+     array[j] = temp;
+   }
+   return array;
+ }
+  
+ function createCards(numArray){ 
+      var nums = shuffleArray(numArray);
       var cardlist=[];
       for (var i=0; i<nums.length; i++) {
            var card = {value:nums[i], faceup: false };
-           cardlist.push(card)
+           cardlist.push(card);
       }
       return cardlist
     }
