@@ -18,10 +18,12 @@ const Card = (props) =>{
 }
 
 const Board = (props) =>{
+  const [counter, setCounter] = useState(0);
   const [moves, setMoves] = useState (0);
   const [cards, setCards]= useState(createCards(props.cardnums));
   const [pairs, setPairs] = useState([]);
   const [clickedCards, setClickedCards] = useState([])
+  const timer = setInterval(()=> setCounter((pre)=> pre+1, 1000);                          
    
   const handleCallback = (data)=> {
       if (clickedCards.length === 0) {
@@ -31,6 +33,7 @@ const Board = (props) =>{
          if(clickedCards[0].id === data.id) return
          if(clickedCards[0].value === data.value) {
               setPairs((prePairs)=> [...prePairs, data.value]); 
+              if(pairs.length === cards.length) clearInterval(timer,1000);
           } 
          setClickedCards([]); 
          setMoves((pre)=> pre+1);
@@ -57,7 +60,9 @@ const Board = (props) =>{
     }
 
   return(
-    <div> moves : {moves} moves  
+    <div> 
+    time: {counter} seconds ---
+    moves : {moves} moves  
       {pairs.length === cards.length ? <div> Congratulation! you win</div> : null}
       <div className= "gridContainer">
         {cards.map((card, index)=> (<Card id={index} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
@@ -67,8 +72,7 @@ const Board = (props) =>{
   )
 }
 const Game = () =>{
-  const [start, setStart] = useState(false);
-
+  const [start, setStart] = useState(false);                        
   const initialState = {nums: [1,2,3]};
   const reducer = (state, action) => {
      switch(action.type) {
@@ -98,7 +102,7 @@ const Game = () =>{
       <div style={mystyle}> 
         <button style={mystyle} disabled={start || state.nums.length<=1} onClick={()=> dispatch({type: 'reduce'})}>Reduce cards</button> 
       </div>
-       {start? <div style={mystyle}> <Board cardnums = {state.nums} /> <button style={mystyle} onClick = {()=> setStart(false)}> restart</button> </div>
+       {start? <div style={mystyle}>  <Board cardnums = {state.nums} /> <button style={mystyle} onClick = {()=> setStart(false)}> restart</button> </div>
               : <button style={mystyle} onClick={()=> setStart(true)}> start </button> } 
      
     </div>
