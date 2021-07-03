@@ -36,7 +36,6 @@ const Board = (props) =>{
          if(clickedCards[0].id === data.id) return
          if(clickedCards[0].value === data.value) {
               setPairs((prePairs)=> [...prePairs, data.value]); 
-              if(pairs.length === cards.length) clearInterval(timer,1000);
           } 
          setClickedCards([]); 
          setMoves((pre)=> pre+1);
@@ -51,6 +50,7 @@ const Board = (props) =>{
     setCards((preCards)=>preCards.map((card)=> ({
                                                ...card,
                                                 faceup: pairs.includes(card.value) || clickedCards.includes(card) } ) ))
+    if(pairs.length === cards.length) clearInterval(timer,1000);
   },[pairs, clickedCards])
 
  function createCards(nums){ 
