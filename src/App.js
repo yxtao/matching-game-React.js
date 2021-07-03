@@ -46,11 +46,7 @@ const Board = (props) =>{
       else if(clickedCards.length === 1 ) {
          if(clickedCards[0].id === data.id) return
          if(clickedCards[0].value === data.value) {
-              setPairs((prePairs)=> [...prePairs, data.value]); 
-              if(end === true) window.clearInterval(window.setInterval(() => {
-                                                     setCounter((pre)=> pre + 1);
-                                                        }, 1000)
-                                                   );
+              setPairs((prePairs)=> [...prePairs, data.value]);         
           } 
          setClickedCards([]); 
          setMoves((pre)=> pre+1);
