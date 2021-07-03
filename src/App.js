@@ -26,7 +26,7 @@ const Board = (props) =>{
   const timer = setInterval(setTimer, 1000);                          
    
   function setTimer() {
-      setCounter((pre) => pre+1);
+      setCounter(counter+1);
   }
   const handleCallback = (data)=> {
       if (clickedCards.length === 0) {
