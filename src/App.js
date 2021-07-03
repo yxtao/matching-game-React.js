@@ -87,7 +87,7 @@ const Board = (props) =>{
       {pairs.length === cards.length ? <div> Congratulation! you win</div> : null}
       <div className= "gridContainer">
         {cards.map((card, index)=> (<Card id={index} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
-        {shuffleArray(cards).map((card, index)=> (<Card id={index+10} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
+        {cards.map((card, index)=> (<Card id={index+10} value={card.value} faceup={card.faceup} callback = {handleCallback} /> )) }
       </div>
     </div>
   )
