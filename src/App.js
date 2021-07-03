@@ -55,7 +55,7 @@ const Board = (props) =>{
     setCards((preCards)=>preCards.map((card)=> ({
                                                ...card,
                                                 faceup: pairs.includes(card.value) || clickedCards.includes(card) } ) ))
-    if(pairs.length === cards.length) {
+    if(pairs.length === cards.length/2) {
         setEnd(true);
     }
   },[pairs, clickedCards])
