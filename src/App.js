@@ -36,7 +36,6 @@ const Board = (props) =>{
     const timer = window.setInterval(() => {
         setCounter((pre)=> pre + 1);
     }, 1000);
-
     return () => window.clearInterval(timer);
   }, []);
   
@@ -50,7 +49,8 @@ const Board = (props) =>{
               setPairs((prePairs)=> [...prePairs, data.value]); 
               if(end === true) window.clearInterval(window.setInterval(() => {
                                                      setCounter((pre)=> pre + 1);
-                                                        }, 1000););
+                                                        }, 1000)
+                                                   );
           } 
          setClickedCards([]); 
          setMoves((pre)=> pre+1);
