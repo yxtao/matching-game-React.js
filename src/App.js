@@ -24,7 +24,6 @@ const Board = (props) =>{
   const [cards, setCards]= useState(createCards(props.cardnums));
   const [pairs, setPairs] = useState([]);
   const [clickedCards, setClickedCards] = useState([])
-  const timer = null;
  // const timer = setInterval(setTimer, 1000);      
   
  // if(end === true)clearInterval(timer,1000); 
@@ -34,7 +33,7 @@ const Board = (props) =>{
 //  }
   
   useEffect(() => {
-     timer = window.setInterval(() => {
+    const timer = window.setInterval(() => {
         setCounter((pre)=> pre + 1);
     }, 1000);
 
@@ -49,7 +48,9 @@ const Board = (props) =>{
          if(clickedCards[0].id === data.id) return
          if(clickedCards[0].value === data.value) {
               setPairs((prePairs)=> [...prePairs, data.value]); 
-              if(end === true) window.clearInterval(timer);
+              if(end === true) window.clearInterval(window.setInterval(() => {
+                                                     setCounter((pre)=> pre + 1);
+                                                        }, 1000););
           } 
          setClickedCards([]); 
          setMoves((pre)=> pre+1);
