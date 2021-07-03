@@ -23,8 +23,11 @@ const Board = (props) =>{
   const [cards, setCards]= useState(createCards(props.cardnums));
   const [pairs, setPairs] = useState([]);
   const [clickedCards, setClickedCards] = useState([])
-  const timer = setInterval(setCounter((pre)=> pre+1), 1000);                          
+  const timer = setInterval(setTimer, 1000);                          
    
+  function setTimer() {
+      setCounter((pre) => pre+1);
+  }
   const handleCallback = (data)=> {
       if (clickedCards.length === 0) {
             setClickedCards((pre) => [...pre,data]);
