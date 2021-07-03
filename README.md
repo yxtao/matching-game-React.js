@@ -1,4 +1,4 @@
-# The link to the deployed gams
+# The link to the deployed game
 https://matching-cards-numbers.netlify.app
 
 # Getting Started with Create React App
