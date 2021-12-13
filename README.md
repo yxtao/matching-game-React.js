@@ -1,6 +1,6 @@
 # The link to the deployed game
 https://matching-cards-numbers.netlify.app
-<img src="https://github.com/yxtao/matching-game-React.js/blob/master/ezgif.com-gif-maker.gif" width="40" height="40" />
+![matching game](https://github.com/yxtao/matching-game-React.js/blob/master/ezgif.com-gif-maker.gif)
 
 # Getting Started with Create React App
 
