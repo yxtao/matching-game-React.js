@@ -1,7 +1,7 @@
+
+![matching game](https://github.com/yxtao/matching-game-React.js/blob/master/ezgif.com-gif-maker.gif)
 # The link to the deployed game
 https://matching-cards-numbers.netlify.app
-![matching game](https://github.com/yxtao/matching-game-React.js/blob/master/ezgif.com-gif-maker.gif)
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
